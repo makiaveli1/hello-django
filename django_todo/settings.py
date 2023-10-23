@@ -46,7 +46,7 @@ else:
 if development:
     ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME' )]
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 
@@ -102,7 +102,7 @@ if development:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+        'default': dj_database_url.parse(str(os.environ.get('DATABASE_URL')))
     }
 
 
