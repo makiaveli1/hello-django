@@ -17,7 +17,7 @@ if os.path.exists("env.py"):
     import env
 
 
-development = os.environ.get('DEVELOPMENT', False)
+development = os.environ.get('DEVELOPMENT')
 
 DEBUG = development
 
@@ -36,10 +36,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if development:
-    DEBUG = False
+    DEBUG = True
 else:
     DEBUG = True
-
+print(development)
     
 
 
