@@ -45,7 +45,7 @@ print(development)
 
 
 if development:
-    ALLOWED_HOSTS = ['ckz8780-django-todest-of-apps-b35a5504c66a.herokuapp.com']
+    ALLOWED_HOSTS = ['DATABASE_URL']
 else:
     ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 print(ALLOWED_HOSTS)
