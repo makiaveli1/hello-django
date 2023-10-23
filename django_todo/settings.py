@@ -104,7 +104,7 @@ if development:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse("postgres://szrftkxb:cWtGv9vTDSjszrEHy9gPGNUrC8202N1r@flora.db.elephantsql.com/szrftkxb")
+        'default': dj_database_url.parse('DATABASE_URL')
     }
 
 
