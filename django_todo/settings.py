@@ -13,14 +13,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+if os.path.exists("env.py"):
+    import env
 
-development = os.environ.get('DEVELOPMENT', True)
 
-# settings.py
-if os.environ.get('SECRET_KEY'):
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-else:
-    SECRET_KEY =('SECRET_KEY','')
+development = os.environ.get('DEVELOPMENT', False)
+
+DEBUG = development
 
 
 
@@ -32,23 +31,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if development:
-    DEBUG = True
+    DEBUG = False
 else:
-    DEBUG = development
+    DEBUG = True
 
     
 
 
 
 if development:
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 else:
-    ALLOWED_HOSTS = ['ckz8780-django-todest-of-apps-b35a5504c66a.herokuapp.com']
-
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+print(ALLOWED_HOSTS)
+print(development)
 
 
 
@@ -95,7 +96,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'django_todo.wsgi.application'
 
 if development:
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -104,7 +104,7 @@ if development:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse(str(os.environ.get('DATABASE_URL')))
+        'default': dj_database_url.parse("postgres://szrftkxb:cWtGv9vTDSjszrEHy9gPGNUrC8202N1r@flora.db.elephantsql.com/szrftkxb")
     }
 
 
