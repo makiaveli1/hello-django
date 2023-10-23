@@ -9,3 +9,6 @@ node_modules/
 cloudinary_python.txt
 env.py
 *.sqlite3
+keys.env
+keys.env.pub
+```
