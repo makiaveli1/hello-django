@@ -18,7 +18,7 @@ development = os.environ.get('DEVELOPMENT', True)
 
 # settings.py
 if os.environ.get('SECRET_KEY'):
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = os.environ.get('SECRET_KEY',)
 
 
 
@@ -33,7 +33,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY =('SECRET_KEY','')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
+if os.environ.get('DEVELOPMENT'):
+    DEBUG = development
+    
+
 
 
 if development:
