@@ -19,7 +19,7 @@ if os.path.exists("env.py"):
 
 development = os.environ.get('DEVELOPMENT')
 
-DEBUG = development
+DEBUG = True
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,12 +33,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost']
+   ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+    ALLOWED_HOSTS = ['127.0.0.1']   
 
 
 # Application definition
