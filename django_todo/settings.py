@@ -35,7 +35,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.environ.get('DEVELOPMENT'):
+if development:
+    DEBUG = True
+else:
     DEBUG = development
 
     
